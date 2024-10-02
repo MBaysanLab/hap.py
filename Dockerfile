@@ -47,7 +47,7 @@ WORKDIR /opt
 RUN wget http://archive.apache.org/dist/ant/binaries/apache-ant-1.9.7-bin.tar.gz && \
     tar xzf apache-ant-1.9.7-bin.tar.gz && \
     rm apache-ant-1.9.7-bin.tar.gz
-ENV PATH $PATH:/opt/apache-ant-1.9.7/bin
+ENV PATH=$PATH:/opt/apache-ant-1.9.7/bin
 
 # run hap.py installer in the image, don't run tests since we don't have a reference file
 WORKDIR /opt/hap.py-source
@@ -60,4 +60,6 @@ RUN bin/test_haplotypes
 # remove source folder
 WORKDIR /
 RUN rm -rf /opt/hap.py-source
+
+ENV PATH=$PATH:/opt/hap.py/bin
 
